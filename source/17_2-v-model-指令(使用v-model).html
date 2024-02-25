@@ -6,22 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .box{
-            width: 300px;
-            height: 400px;
-            background-color: aqua;
-            animation: dh 2s linear 0s infinite;
-        }
-
-        @keyframes dh{
-            from{
-                transform: rotate(0deg);
-            }
-            to{
-                transform: rotate(360deg);
-            }
-        }
-
+       
 
 
     </style>
@@ -32,9 +17,8 @@
 
     <div id="app">
         
-        <button @click="handler">变换</button>
-
-        <div class="box" v-show="show">我是</div>
+        <!--不使用v-model 实现双向绑定-->
+       <input type="text" v-bind:value="name" v-on:input="handler">
 
     </div>
 
@@ -55,7 +39,8 @@
             },
             methods: {
                 handler(e) {
-                    this.show = !this.show;
+                    console.log(e.target)
+                   this.name = e.target.value;
                 }
 
             }

@@ -6,24 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .box{
+        img{
             width: 300px;
             height: 400px;
-            background-color: aqua;
-            animation: dh 2s linear 0s infinite;
         }
-
-        @keyframes dh{
-            from{
-                transform: rotate(0deg);
-            }
-            to{
-                transform: rotate(360deg);
-            }
-        }
-
-
-
     </style>
     <script src="../node_modules/vue/dist/vue.js"></script>
 </head>
@@ -32,10 +18,20 @@
 
     <div id="app">
         
-        <button @click="handler">变换</button>
+        <button @click="handler"></button>
 
-        <div class="box" v-show="show">我是</div>
-
+        <template v-if="show">
+            <div>
+                我是div-1
+            </div>
+            <div>
+                我是div-1
+            </div>
+            <div>
+                我是div-1
+            </div>
+        </template>
+       
     </div>
 
 
@@ -49,12 +45,15 @@
                     age: 18,
                     msg: "马路",
                     sex: "man",
-                    show: true
+                    show:false,
+                    imgPath:"https://127.0.0.1:3000/images/aa.jpg"
 
                 }
             },
             methods: {
                 handler(e) {
+                    console.log("点我")
+                    console.log(e)
                     this.show = !this.show;
                 }
 
