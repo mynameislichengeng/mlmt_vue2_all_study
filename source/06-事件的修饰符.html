@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: gold;
+        }
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>{{name}}</h1>
+
+        <form action="http://www.baidu.com">
+            <button v-on:click.prevent="handler">提交</button>
+        </form> 
+
+        <hr>
+        <div @click="handler1">
+            <button @click.stop="handler2">点我</button>
+        </div>
+    </div>
+
+
+    <script>
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    age: 18,
+                    msg: "马路",
+                    sex: "man"
+
+                }
+            },
+            methods: {
+                handler(e) {
+                    console.log("点我")
+                    console.log(e)
+                    // e.preventDefault();
+                    
+
+                },
+                handler1() {
+                    console.log("冒泡-点div")
+                    // this.name = "我是简单写";
+                },
+                handler2(e) {
+                    console.log("冒泡-点button")
+                    // e.stopPropagation();
+                    
+                    // this.name = "我是简单写btn";
+                },
+                over() {
+                    console.log("鼠标离开")
+                }
+
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>

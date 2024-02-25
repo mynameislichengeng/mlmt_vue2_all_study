@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: gold;
+        }
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>{{name}}</h1>
+
+        <div class="box" v-on:click="handler"></div>
+        <div class="box" @click="handler1($event,1)"></div>
+        <h3 @mouseover="over">我是鼠标</h3>
+    </div>
+
+
+    <script>
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    age: 18,
+                    msg: "马路",
+                    sex: "man"
+
+                }
+            },
+            methods: {
+                handler() {
+                    console.log("点我")
+                },
+                handler1(e,num) {
+                    console.log("点我-简写",e,num)
+                    this.name = "我是简单写";
+                },
+                over() {
+                    console.log("鼠标离开")
+                }
+
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>
