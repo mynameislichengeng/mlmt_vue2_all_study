@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <textarea name="" id="" cols="30" rows="10" v-model="content"></textarea>
+
+        <p>输入的内容:{{content}}</p>
+    </div>
+
+
+    <script>
+
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    age: 18,
+                    msg: "马路",
+                    sex: "man",
+                    show: true,
+                    content: "",
+                    isAgree: false,
+                    hobbies: []
+                }
+            },
+            methods: {
+                handler(e) {
+                    this.isAgree = e.target.checked
+                }
+
+            }
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

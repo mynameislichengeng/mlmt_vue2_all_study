@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div>
+            <h2>请选择你的爱好</h2>
+            <label for="sing">
+                <input type="checkbox" id="sing" v-model="hobbies" value="唱歌">唱歌
+            </label>
+            <label for="dance">
+                <input type="checkbox" id="dance" v-model="hobbies" value="跳舞">跳舞
+            </label>
+
+            <h2>爱好:{{hobbies}}</h2>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    age: 18,
+                    msg: "马路",
+                    sex: "man",
+                    show: true,
+                    hobbies: []
+                }
+            },
+            methods: {
+                handler(e) {
+                    console.log(e.target)
+                    this.name = e.target.value;
+                }
+
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="gender">
+            <label for="male">
+                <input type="radio" id="male" name="sex" value="男" v-model="gender">男
+            </label>
+            <label for="female">
+                <input type="radio" id="female" name="sex" value="女" v-model="gender">女
+            </label>
+        </div>
+
+        <h2>选择的:{{gender}}</h2>
+    </div>
+
+
+    <script>
+
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    age: 18,
+                    msg: "马路",
+                    sex: "man",
+                    show: true,
+                    content: "",
+                    isAgree: false,
+                    gender: "男",
+                    hobbies: []
+                }
+            },
+            methods: {
+                handler(e) {
+                    this.isAgree = e.target.checked
+                }
+
+            }
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

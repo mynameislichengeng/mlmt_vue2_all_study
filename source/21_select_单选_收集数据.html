@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="gender">
+
+            <select name="" id="" v-model="fruit">
+                <option value="apple">苹果</option>
+                <option value="banana">香蕉</option>
+
+            </select>
+
+        </div>
+
+        <h2>单选:{{fruit}}</h2>
+    </div>
+
+
+    <script>
+
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    age: 18,
+                    msg: "马路",
+                    sex: "man",
+                    show: true,
+                    content: "",
+                    isAgree: false,
+                    gender: "男",
+                    hobbies: [],
+                    fruit: "banana"
+                }
+            },
+            methods: {
+                handler(e) {
+                    this.isAgree = e.target.checked
+                }
+
+            }
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
