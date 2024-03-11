@@ -34,7 +34,6 @@
                     name: 'zhangsan',
                     firstName: 'li',
                     lastName: "cheng",
-                    keyword: "",
                     a: {
                         b: {
                             c: 100
@@ -53,7 +52,8 @@
                 // }
 
                 //方式二
-                keyword: {
+                a: {
+                    deep: true,
                     //key必须定义成handler
                     handler() {
                         console.log("-keyword-bb-")

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        请输入：<input type="text" v-model="keyword" />
+
+        <ul>
+            <li v-for="(item,index) in result">
+                {{item.q}}
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    keyword: "",
+                    result: []
+                }
+            },
+            methods: {
+
+
+            },
+            watch: {
+                //方式一
+                // keyword: function () {
+                //     console.log("--keyword变化")
+                // }
+
+                //方式二
+                keyword: {
+                    //key必须定义成handler
+                    handler() {
+                        let that = this
+                        window.cb = function (data) {
+                            console.log(data)
+                            that.result = data.g
+                        }
+                        let script = document.createElement('script')
+                        let request = `https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=39661,40206,40211,40216,40223,40252,40273,40283,40294,40290,40289,40284,40317,40079,40364,40351,40299,40381,40366,40406&wd=${this.keyword}&his=[]&req=2&bs=aa&pbs=aa&csor=3&pwd=${this.keyword}&cb=cb&_=1710117504670`
+                        script.src = request
+                        document.body.prepend(script)
+                    }
+
+                }
+            }
+
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="./data/books.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        请输入：<input type="text" v-model="keyword" />
+
+        <ul>
+            <li v-for="(item,index) in result">
+                {{item.q}}
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    books: books
+                }
+            },
+            methods: {
+
+            },
+            watch: {
+
+            }
+
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
