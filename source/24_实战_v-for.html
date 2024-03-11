@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tab {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tab li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .tab .active {
+            color: red;
+        }
+
+        .content {
+            display: none;
+
+        }
+
+        .visibel {
+            display: block;
+        }
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <ul class="tab">
+            <li v-for=" (item,index) in list" :class="{ 'active' : selectIndex===index }" @click="change(index)">
+                {{item.title}}
+            </li>
+        </ul>
+
+        <ul v-for=" (item,index) in list" class="content" :class="{ 'visibel': selectIndex===index }">
+            {{item.content}}
+        </ul>
+
+    </div>
+
+
+    <script>
+
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    list: [
+                        { id: 1, title: '音乐', content: "成都-赵雷" },
+                        { id: 2, title: '电影', content: "新蝙蝠侠" },
+                        { id: 3, title: '电视剧', content: "甄嬛传" }
+
+                    ],
+                    selectIndex: 0
+                }
+            },
+            methods: {
+                change(index) {
+                    if (index === this.selectIndex) {
+                        return
+                    }
+                    this.selectIndex = index;
+                }
+
+            }
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

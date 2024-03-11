@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <ul>
+            <li v-for=" (value,key,index) in obj">
+                {{index}}: {{value}}-{{key}}
+            </li>
+        </ul>
+
+
+    </div>
+
+
+    <script>
+
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    age: 18,
+                    msg: "马路",
+                    sex: "man",
+                    obj: {
+                        name: "马路",
+                        age: 1,
+                        sex: "man"
+                    }
+                }
+            },
+            methods: {
+                handler(e) {
+
+                }
+
+            }
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

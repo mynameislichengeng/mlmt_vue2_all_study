@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .no-bullet {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .no-bullet li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <ul class="no-bullet">
+            <li v-for=" (item,index) in arr" v-on:click="handle(index)" v-bind:ref="index">
+                {{item.title}}
+            </li>
+        </ul>
+
+
+    </div>
+
+
+    <script>
+
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    arr: [
+                        { id: 1, title: '军事' },
+                        { id: 2, title: '游戏' },
+                        { id: 3, title: '直播' },
+                        { id: 4, title: '财经' },
+                        { id: 5, title: '汽车' },
+                        { id: 6, title: '娱乐' },
+                        { id: 7, title: '生活' },
+                        { id: 8, title: '感情' },
+                        { id: 9, title: '购物' },
+                        { id: 10, title: '美食' }
+                    ]
+                }
+            },
+            methods: {
+                handle(index) {
+                    console.log(this.$refs)
+                    for (let key in this.$refs) {
+                        this.$refs[key][0].style.background = ""
+                    }
+                    this.$refs[index][0].style.background = "gold"
+                }
+
+            }
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

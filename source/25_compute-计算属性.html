@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+
+        <h1>全名: {{allName}}</h1>
+        <h1>全名: {{kkName}}</h1>
+    </div>
+
+
+    <script>
+
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    firstName: 'li',
+                    lastName: "cheng"
+                }
+            },
+            methods: {
+
+
+            },
+            computed: {
+                allName() {
+                    return this.firstName + this.lastName;
+                },
+                kkName: {
+                    get: function () {
+                        return this.firstName + this.lastName + "---";
+                    },
+                    set: function (value) {
+                        this.firstName = value
+                        this.lastName = value
+                    }
+
+                }
+            }
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

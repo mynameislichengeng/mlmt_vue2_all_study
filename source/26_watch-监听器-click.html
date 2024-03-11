@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <button @click="a.b.c--">-1</button>
+
+        <span>{{a.b.c}}</span>
+
+        <button @click="a.b.c++">+1</button>
+
+    </div>
+
+
+    <script>
+
+
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    name: 'zhangsan',
+                    firstName: 'li',
+                    lastName: "cheng",
+                    keyword: "",
+                    a: {
+                        b: {
+                            c: 100
+                        }
+                    }
+                }
+            },
+            methods: {
+
+
+            },
+            watch: {
+                //方式一
+                // keyword: function () {
+                //     console.log("--keyword变化")
+                // }
+
+                //方式二
+                keyword: {
+                    //key必须定义成handler
+                    handler() {
+                        console.log("-keyword-bb-")
+                    }
+                }
+            }
+
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
