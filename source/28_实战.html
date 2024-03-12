@@ -6,7 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        table {
+            border-collapse: collapse
+        }
 
+        thead {
+            background-color: aqua;
+        }
+
+        th,
+        td {
+            border: 1px solid #aaa;
+            padding: 8px 16px;
+        }
+
+        .active {
+            background-color: blue;
+        }
     </style>
     <script src="../node_modules/vue/dist/vue.js"></script>
     <script src="./data/books.js"></script>
@@ -16,13 +32,43 @@
 
     <div id="app">
 
-        请输入：<input type="text" v-model="keyword" />
+        <template v-if="books.length">
+            <table>
+                <thead>
+                    <tr>
+                        <td>序号</td>
+                        <td>书籍名称</td>
+                        <td>出版日期</td>
+                        <td>价格</td>
+                        <td>购物数量</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in books">
+                        <td>{{index+1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.data}}</td>
+                        <td>{{formartPrice(item.price)}}</td>
+                        <td>
+                            <button @click="add(index,item)" class="active">+1</button>
+                            {{item.count}}
+                            <!-- <button @click="subtraction(index,item)" v-bind:class="{'active':item.count>1}">-1</button> -->
+                            <button @click="subtraction(index,item)" v-bind:disabled="item.count<=1">-1</button>
+                        </td>
+                        <td>
+                            <button @click="removeBook(index,item)">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>总价:{{totalPrice()}}</h2>
+        </template>
 
-        <ul>
-            <li v-for="(item,index) in result">
-                {{item.q}}
-            </li>
-        </ul>
+        <template v-else>
+            <h1>购物车空空如也 </h1>
+        </template>
+
     </div>
 
 
@@ -38,7 +84,29 @@
                 }
             },
             methods: {
-
+                formartPrice(price) {
+                    return "￥" + price;
+                },
+                add(index, item) {
+                    item.count++
+                },
+                subtraction(index, item) {
+                    if (item.count == 1) {
+                        console.log("无法继续减少")
+                        return
+                    }
+                    item.count--
+                },
+                removeBook(index, item) {
+                    this.books.splice(index, 1)
+                },
+                totalPrice() {
+                    return this.books.reduce((a, b) => {
+                        console.log("a", a)
+                        console.log("b", b)
+                        return a.price * a.count + b.price * b.count
+                    })
+                }
             },
             watch: {
 
